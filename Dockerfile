@@ -1,7 +1,9 @@
 FROM elixir:latest
 
-COPY ./config .
-COPY ./lib .
+RUN mkdir -p /app
+WORKDIR /app
+COPY ./config ./config
+COPY ./lib ./lib
 COPY ./mix.* ./
 
 RUN mix local.hex --force
