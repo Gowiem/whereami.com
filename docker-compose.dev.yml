@@ -1,0 +1,5 @@
+whereami:
+  container_name: whereami
+  build: .
+  ports:
+    - 80:8080
