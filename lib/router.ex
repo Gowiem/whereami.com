@@ -25,7 +25,7 @@ defmodule WhereAmIBackend.Router do
   """
   post "/location" do
     body_json =  Poison.Encoder.encode(conn.body_params, [])
-    :poolboy.transaction(:redis_pool, fn(worker) -> Redix.command(worker, ~w(RPUSH locations #{body_json})) end)
+    :poolboy.transaction(:redis_pool, fn(worker) -> Redix.command(worker, ["RPUSH", "locations", body_json]) end)
     send_resp(conn, 200, "Success!")
   end
 
