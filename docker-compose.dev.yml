@@ -1,6 +1,8 @@
 whereami:
   container_name: whereami
   build: .
+  environment:
+    - MIX_ENV=dev
   links:
     - redis
   ports:
@@ -9,4 +11,4 @@ redis:
   container_name: redis
   image: redis
   ports:
-    - "6379"
+    - 6379:6379
